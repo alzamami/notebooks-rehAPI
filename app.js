@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const notebookRoutes = require("./API/notebook/routes");
+const noteRoutes = require("./API/note/routes");
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use("/notebooks", notebookRoutes);
+app.use("/notes", noteRoutes);
 const run = async () => {
   try {
     await db.sequelize.sync({ force: true });

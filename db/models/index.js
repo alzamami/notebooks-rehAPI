@@ -45,11 +45,8 @@ db.Sequelize = Sequelize;
 
 db.Notebook.hasMany(db.Note, {
   foreignKey: "notebookId",
-  as: "notes",
   allowNull: false,
-});
-db.Note.belongsTo(db.Notebook, {
-  foreignKey: "notebookId",
-  as: "notebook",
-});
+  as: "notes",
+}); // create many-1 relation
+db.Note.belongsTo(db.Notebook, { as: "notebook", foreignKey: "notebookId" });
 module.exports = db;
